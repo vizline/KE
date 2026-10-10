@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Panel Komisji ds. Etyki Badań Naukowych na Wydziale Psychologii i Prawa Uniwersytetu SWPS w Poznaniu.">
+  <title>Komisja ds. Etyki Badań Naukowych</title>
+  <style>
+    :root {
+      --ink: #171717;
+      --muted: #68635f;
+      --line: #e7e4e0;
+      --paper: #ffffff;
+      --wash: #f7f6f4;
+      --accent: #9f1827;
+      --accent-dark: #7e111e;
+      --accent-soft: #f7e9eb;
+      --shadow: 0 20px 60px rgba(30, 24, 20, .09);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { min-height: 100%; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(159, 24, 39, .055), transparent 31rem),
+        var(--wash);
+      color: var(--ink);
+      font: 16px/1.6 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar {
+      min-height: 92px;
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, .94);
+      border-bottom: 1px solid var(--line);
+      padding: 18px clamp(22px, 6vw, 84px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 1040px;
+    }
+
+    .brand img {
+      width: 94px;
+      height: 46px;
+      object-fit: contain;
+      object-position: left center;
+      flex: 0 0 auto;
+    }
+
+    .brand-copy { line-height: 1.3; }
+
+    .brand-title {
+      margin: 0;
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: 650;
+      letter-spacing: -.015em;
+    }
+
+    .brand-subtitle {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    main {
+      width: 100%;
+      max-width: 1180px;
+      margin: auto;
+      padding: clamp(42px, 8vw, 96px) clamp(22px, 6vw, 72px);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: clamp(34px, 6vw, 72px);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      right: -125px;
+      top: -135px;
+      border: 44px solid var(--accent-soft);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 720px;
+      margin: 0;
+      font-size: clamp(36px, 6vw, 62px);
+      line-height: 1.06;
+      letter-spacing: -.045em;
+      font-weight: 680;
+    }
+
+    .lead {
+      max-width: 690px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 20px);
+      line-height: 1.65;
+    }
+
+    .requirements {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 28px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .requirements li {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #faf9f7;
+      color: #4e4945;
+      font-size: 13px;
+    }
+
+    .requirements li::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .action-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 36px;
+    }
+
+    .primary-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+      min-height: 52px;
+      padding: 13px 22px;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 650;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(159, 24, 39, .18);
+      transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+    }
+
+    .primary-action:hover {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(159, 24, 39, .23);
+    }
+
+    .primary-action:focus-visible {
+      outline: 3px solid rgba(159, 24, 39, .25);
+      outline-offset: 4px;
+    }
+
+    .arrow { font-size: 20px; line-height: 1; }
+
+    footer {
+      padding: 0 24px 26px;
+      text-align: center;
+      color: #817b76;
+      font-size: 12px;
+    }
+
+    @media (max-width: 640px) {
+      .topbar { min-height: 78px; }
+      .brand { gap: 14px; }
+      .brand img { width: 72px; height: 38px; }
+      .brand-subtitle { display: none; }
+      main { padding-top: 28px; padding-bottom: 42px; }
+      .hero { border-radius: 18px; }
+      .action-row { align-items: stretch; }
+      .primary-action { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .primary-action { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <img
+          src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/SWPS_University.svg/960px-SWPS_University.svg.png"
+          alt="Uniwersytet SWPS"
+        >
+        <div class="brand-copy">
+          <p class="brand-title">Komisja ds. Etyki Badań Naukowych</p>
+          <p class="brand-subtitle">Wydział Psychologii i Prawa Uniwersytetu SWPS w Poznaniu</p>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="content">
+          <p class="eyebrow">Elektroniczny panel komisji</p>
+          <h1 id="page-title">Złóż wniosek lub przejdź do jego oceny</h1>
+
+          <p class="lead">
+            Aby otworzyć panel komisji jako wnioskodawca, recenzent lub członek prezydium,
+            skorzystaj z komputera stacjonarnego albo laptopa i zaloguj się na konto
+            w domenie <strong>swps.edu.pl</strong> lub <strong>st.swps.edu.pl</strong>.
+          </p>
+
+          <ul class="requirements" aria-label="Wymagania dostępu">
+            <li>Komputer stacjonarny lub laptop</li>
+            <li>Konto Google SWPS</li>
+          </ul>
+
+          <div class="action-row">
+            <a
+              class="primary-action"
+              href="https://script.google.com/macros/s/AKfycbwhTatfS5-yVglUq93WXruv66fsDDiAOeazzeJSd47yXW1EDU1G3rmmTcgSbo3zpD9Lmw/exec"
+              target="_self"
+              aria-label="Otwórz panel Komisji ds. Etyki Badań Naukowych"
+            >
+              Otwórz panel komisji
+              <span class="arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Wydział Psychologii i Prawa Uniwersytetu SWPS w Poznaniu
+    </footer>
+  </div>
+</body>
+</html>
